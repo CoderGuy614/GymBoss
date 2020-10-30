@@ -5,3 +5,21 @@ main {
 i {
   margin: 0px 5px 0px 5px;
 }
+
+i.bigStar {
+  font-size:100px;
+}
+
+i.bigStar.bronze {
+  color: #cd7f32
+}
+i.bigStar.silver {
+  color: #c0c0c0
+}
+i.bigStar.gold {
+  color: #ffd700
+}
+i.bigStar.platinum {
+  color: 	
+  #e5e4e2
+}
