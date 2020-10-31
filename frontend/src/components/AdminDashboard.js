@@ -14,7 +14,9 @@ const AdminDashboard = () => {
     <Container>
       <ListGroup>
         {users.map((u, i) => (
-          <ListGroup.Item key={i}>{u.name}</ListGroup.Item>
+          <ListGroup.Item key={i}>
+            <a href={`/users/${u._id}`}>{u.name}</a>
+          </ListGroup.Item>
         ))}
       </ListGroup>
     </Container>

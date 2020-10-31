@@ -8,6 +8,7 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import UserDashboard from "./components/UserDashboard";
 import AdminDashboard from "./components/AdminDashboard";
+import UserDetails from "./components/UserDetails";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/signup" component={Signup} exact />
           <Route path="/user-dashboard" component={UserDashboard} exact />
           <Route path="/admin-dashboard" component={AdminDashboard} exact />
+          <Route path="/users/:id" component={UserDetails} exact />
         </Switch>
       </main>
       <Footer />
