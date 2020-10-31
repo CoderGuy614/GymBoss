@@ -15,7 +15,7 @@ const UserDashboard = () => {
     <Container>
       <Row>
         <Col md={4}>
-          <Row>
+          <Row className="justify-content-center">
             <Card style={{ width: "12rem" }}>
               <i className={"fas fa-star bigStar mx-auto p-3 gold"}></i>
               <Card.Body>
@@ -27,14 +27,14 @@ const UserDashboard = () => {
               </Card.Body>
             </Card>
           </Row>
-          <Row>
+          <Row className="justify-content-center my-2">
             <h3>Member Since: 2019</h3>
           </Row>
         </Col>
 
         <Col md={8}>
-          <h1>Your Profile:</h1>
-          <Container>
+          <Row className="m-1">
+            <h1>Your Profile:</h1>
             <Table
               striped
               bordered
@@ -70,7 +70,47 @@ const UserDashboard = () => {
                 </tr>
               </tbody>
             </Table>
-          </Container>
+            <Button block variant="outline-secondary">
+              Edit Profile
+            </Button>
+          </Row>
+          <Row className="mt-3">
+            <h1>Your Payment Settings:</h1>
+            <Table
+              striped
+              bordered
+              hover
+              variant="light"
+              className="text-center"
+            >
+              <thead></thead>
+              <tbody>
+                <tr>
+                  <td>Payment Method:</td>
+                  <td>Visa</td>
+                </tr>
+                <tr>
+                  <td>Payment Amount:</td>
+                  <td>$25</td>
+                </tr>
+                <tr>
+                  <td>Last Payment Date:</td>
+                  <td>Jan 1st 2021</td>
+                </tr>
+                <tr>
+                  <td>Next Payment Date:</td>
+                  <td>Feb 1st 2021</td>
+                </tr>
+                <tr>
+                  <td>AutoPay:</td>
+                  <td>Active</td>
+                </tr>
+              </tbody>
+            </Table>
+            <Button block variant="outline-secondary">
+              Edit Payment Settings
+            </Button>
+          </Row>
         </Col>
       </Row>
     </Container>
