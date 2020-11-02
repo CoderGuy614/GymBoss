@@ -35,7 +35,7 @@ const UserDashboard = () => {
         </Col>
 
         <Col md={8}>
-          <Row className="m-1">
+          <Row className="m-2">
             <h1>Your Profile:</h1>
             <Table
               striped
@@ -76,7 +76,7 @@ const UserDashboard = () => {
               Edit Profile
             </Button>
           </Row>
-          <Row className="mt-3">
+          <Row className="m-2">
             <h1>Your Payment Settings:</h1>
             <Table
               striped
