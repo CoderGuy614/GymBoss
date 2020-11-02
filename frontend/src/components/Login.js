@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Card, Button, Form } from "react-bootstrap";
+import { login } from "../actions/authActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const [values, setValues] = useState({ email: "", password: "" });
+
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { email, password } = values;
+    dispatch(login(email, password));
+  };
+
+  const { email, password } = values;
   return (
     <Container>
       <Card>
@@ -9,10 +25,16 @@ const Login = () => {
           <h1 className="text-center">Login to Your Account</h1>
         </Card.Header>
         <Card.Body>
-          <Form>
+          <Form onSubmit={(e) => handleSubmit(e)}>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                onChange={(e) => handleChange(e)}
+                name="email"
+                value={email}
+              />
               <Form.Text className="text-muted">
                 We'll never share your email with anyone else.
               </Form.Text>
@@ -20,14 +42,20 @@ const Login = () => {
 
             <Form.Group controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                onChange={(e) => handleChange(e)}
+                name="password"
+                value={password}
+              />
             </Form.Group>
 
             <Button
               block
               variant="primary"
               type="submit"
-              href="/user-dashboard"
+              // href="/user-dashboard"
             >
               Submit
             </Button>
