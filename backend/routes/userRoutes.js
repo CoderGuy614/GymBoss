@@ -1,28 +1,18 @@
 import express from "express";
 const router = express.Router();
-import User from "../models/userModel.js";
-import asyncHandler from "express-async-handler";
+import { protect } from "../middleware/authMiddleware.js";
 
-//@description Fetch all Users
-//@route GET /api/users
-//@access Public
-router.get(
-  "/",
-  asyncHandler(async (req, res) => {
-    const users = await User.find({});
-    res.json(users);
-  })
-);
+import {
+  authUser,
+  getUserProfile,
+  registerUser,
+  getUsers,
+  getUser,
+} from "../controllers/userController.js";
 
-//@description Fetch a user by ID
-//@route GET /api/users/:id
-//@access Public
-router.get(
-  "/:id",
-  asyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.id);
-    res.json(user);
-  })
-);
+router.route("/").post(registerUser).get(getUsers);
+router.route("/:id").get(getUser);
+router.post("/login", authUser);
+router.route("/profile").get(protect, getUserProfile);
 
 export default router;
