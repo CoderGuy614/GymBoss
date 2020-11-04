@@ -21,6 +21,44 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    phone: {
+      type: String,
+      required: true,
+    },
+    dob: {
+      type: Date,
+      required: true,
+    },
+    address: {
+      street: {
+        type: String,
+        required: true,
+      },
+      city: {
+        type: String,
+        required: true,
+      },
+      state: {
+        type: String,
+        required: true,
+      },
+      zip: {
+        type: String,
+        required: true,
+      },
+    },
+    emergencyContactName: {
+      type: String,
+      required: true,
+    },
+    emergencyContactPhone: {
+      type: String,
+      required: true,
+    },
+    avatar: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
