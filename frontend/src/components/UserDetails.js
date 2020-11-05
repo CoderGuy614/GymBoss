@@ -9,7 +9,7 @@ import {
   ListItem,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { listUserDetails } from "../actions/userActions";
+import { getUserDetails } from "../actions/userActions";
 
 const UserDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const UserDetails = ({ match }) => {
   const { name, email } = profile;
 
   useEffect(() => {
-    dispatch(listUserDetails(match.params.id));
+    dispatch(getUserDetails(match.params.id));
   }, [dispatch]);
 
   return (

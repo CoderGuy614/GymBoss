@@ -3,11 +3,19 @@ import { Container, Card, Button, Form } from "react-bootstrap";
 import { login } from "../actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
 
-const Login = () => {
+const Login = ({ location, history }) => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
   const [values, setValues] = useState({ email: "", password: "" });
+
+  const redirect = location.search ? location.search.split("=")[1] : "/";
+
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
+  }, [history, userInfo, redirect]);
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });

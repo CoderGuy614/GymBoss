@@ -28,9 +28,18 @@ export const listUsers = () => async (dispatch) => {
   }
 };
 
-export const listUserDetails = (id) => async (dispatch) => {
+export const getUserDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_DETAILS_REQUEST });
+    const {
+      userLogin: { userInfo },
+    } = getState();
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
     const { data } = await axios.get(`/api/users/${id}`);
     dispatch({
       type: USER_DETAILS_SUCCESS,
