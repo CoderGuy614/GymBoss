@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Moment from "react-moment";
 import {
   Container,
   Row,
@@ -17,7 +18,8 @@ import { getUserDetails } from "../actions/userActions";
 const UserDashboard = ({ history }) => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
-  const authUserId = userLogin.userInfo._id;
+  const { userInfo } = userLogin;
+
   const userDetails = useSelector((state) => state.userDetails);
   const {
     loading,
@@ -25,12 +27,13 @@ const UserDashboard = ({ history }) => {
   } = userDetails;
 
   useEffect(() => {
-    if (!loading && !authUserId) {
+    if (!loading && !userInfo) {
       history.push("/login");
     } else {
+      const authUserId = userInfo._id;
       dispatch(getUserDetails(authUserId));
     }
-  }, [dispatch, history, authUserId]);
+  }, [dispatch, history, userInfo]);
 
   // useEffect(() => {
   //   if (user && user.profile) {
@@ -106,7 +109,9 @@ const UserDashboard = ({ history }) => {
                   </tr>
                   <tr>
                     <td>DOB:</td>
-                    <td>{profile && profile.dob}</td>
+                    <td>
+                      <Moment format="L">{profile && profile.dob}</Moment>
+                    </td>
                   </tr>
                   <tr>
                     <td>Emergency Contact Name:</td>
