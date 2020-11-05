@@ -20,44 +20,47 @@ const userSchema = mongoose.Schema(
     password: {
       type: String,
       required: true,
+      default: bcrypt.hashSync("123456", 10),
     },
-    phone: {
-      type: String,
-      required: true,
-    },
-    dob: {
-      type: Date,
-      required: true,
-    },
-    address: {
-      street: {
+    profile: {
+      phone: {
         type: String,
         required: true,
       },
-      city: {
+      dob: {
+        type: Date,
+        required: true,
+      },
+      address: {
+        street: {
+          type: String,
+          required: true,
+        },
+        city: {
+          type: String,
+          required: true,
+        },
+        state: {
+          type: String,
+          required: true,
+        },
+        zip: {
+          type: String,
+          required: true,
+        },
+      },
+      emergencyContactName: {
         type: String,
         required: true,
       },
-      state: {
+      emergencyContactPhone: {
         type: String,
         required: true,
       },
-      zip: {
+      avatar: {
         type: String,
         required: true,
       },
-    },
-    emergencyContactName: {
-      type: String,
-      required: true,
-    },
-    emergencyContactPhone: {
-      type: String,
-      required: true,
-    },
-    avatar: {
-      type: String,
-      required: true,
     },
   },
   {
