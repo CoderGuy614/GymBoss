@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Container, Card, Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Container, Card, Button, Form, Row, Col } from "react-bootstrap";
 import { login } from "../actions/authActions";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -70,6 +71,11 @@ const Login = ({ location, history }) => {
               Submit
             </Button>
           </Form>
+          <Row className="py-3">
+            <Col className="text-center">
+              Not a Member Yet? <Link to={"/signup"}>Click Here to Signup</Link>
+            </Col>
+          </Row>
         </Card.Body>
       </Card>
     </Container>
