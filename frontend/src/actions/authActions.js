@@ -8,7 +8,6 @@ import {
 import axios from "axios";
 
 export const login = (email, password) => async (dispatch) => {
-  console.log("LOGIN RAN");
   try {
     dispatch({ type: USER_LOGIN_REQUEST });
     const config = {
@@ -38,6 +37,10 @@ export const login = (email, password) => async (dispatch) => {
           : error.message,
     });
   }
+};
+
+export const register = () => {
+  console.log("Register Ran");
 };
 
 export const logout = () => (dispatch) => {

@@ -22,7 +22,7 @@ const Signup = ({ location, history }) => {
     if (userInfo) {
       history.push("/user-dashboard");
     }
-  }, [history, userInfo, redirect]);
+  }, [history, userInfo]);
 
   const handleChange = (e) => {
     setMessage("");
@@ -32,7 +32,7 @@ const Signup = ({ location, history }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, password, password2 } = values;
-    if (password1 !== password2) {
+    if (password !== password2) {
       setMessage("Passwords Do Not Match");
     } else {
       dispatch(register(name, email, password));
